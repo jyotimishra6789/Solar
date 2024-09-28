@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            background-color: #003366;
+            color: #fff;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        h2, h3 {
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 90%;
+            height: auto;
+            border: 5px solid #003366;
+        }
+
+        p {
+            max-width: 800px;
+            text-align: justify;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #pic{
+            width:40%;
+        }
+    </style>
+</head>
+<body>
+    <h1>NASA Astronomy Picture Of The Day</h1>
+    <h2 id="title"></h2>
+    <h3>Date: <span id="date"></span></h3>
+    <img id="pic" src="" alt="NASA Picture Of The Day" >
+    <p id="explanation"></p>
+
+    <script>
+        var req = new XMLHttpRequest();
+        var url = "https://api.nasa.gov/planetary/apod?api_key=";
+        var api_key = "6y4glmP6O8heD7sb2EZzKtgnpRgf8uxVz5gxL4me";
+
+        req.open("GET", url + api_key);
+        req.send();
+
+        req.addEventListener("load", function() {
+            if (req.status == 200 && req.readyState == 4) {
+                var response = JSON.parse(req.responseText);
+                document.getElementById("title").textContent = response.title;
+                document.getElementById("date").textContent = response.date;
+                document.getElementById("pic").src = response.hdurl;
+                document.getElementById("explanation").textContent = response.explanation;
+            }
+        });
+    </script>
+</body>
+</html>

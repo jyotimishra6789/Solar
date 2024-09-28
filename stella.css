@@ -1,0 +1,94 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: url("sky.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Kufam', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 
+        'FILL' 0, 
+        'wght' 400, 
+        'GRAD' 0, 
+        'opsz' 24;
+    color: white;
+    scale: 1.5;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.stela {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-weight: lighter;
+    font-size: larger;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    gap: 2em;
+    color: white;
+    font-size: large;
+    font-family: 'Kufam', sans-serif;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.heading {
+    font-size: xx-large;
+    color: white;
+    margin-left: 30px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px; /* Adjust as needed */
+    margin-top: 20px;
+    width: 80vw;
+}
+
+.sun, .moon, .earth {
+    max-width: 100%;
+    display: block;
+}
+
+.sun {
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+scale:1.2;
+}
+
+.earth {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    scale:1.2;
+    
+}
+
+.moon {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+    scale:1.2;
+    
+}
