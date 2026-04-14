@@ -23,15 +23,17 @@
             <!-- Top Controls -->
             <div class="c-top-bar">
                 <div class="c-left-controls">
-                    <button class="c-pill c-pill-white">Menu <div class="c-dot"></div></button>
-                    <div class="c-lang material-symbols-outlined" style="font-size:1.2rem; margin-right:5px; opacity:0.8;">language</div>
-                    <div class="c-lang">EN FR</div>
+                    <button class="c-pill c-pill-white" id="btn-menu">Menu <div class="c-dot"></div></button>
+                    <div id="btn-lang" style="display:flex; align-items:center; cursor:pointer;">
+                        <div class="c-lang material-symbols-outlined" style="font-size:1.2rem; margin-right:5px; opacity:0.8;">language</div>
+                        <div class="c-lang">EN FR</div>
+                    </div>
                 </div>
                 
                 <div class="c-right-controls">
-                    <div class="c-pill c-pill-white c-search">Searching... <div class="c-search-icon material-symbols-outlined">search</div></div>
-                    <button class="c-icon-btn material-symbols-outlined">play_arrow</button>
-                    <div class="c-pill c-pill-white c-user">
+                    <div class="c-pill c-pill-white c-search" id="btn-search" style="cursor:pointer;">Searching... <div class="c-search-icon material-symbols-outlined">search</div></div>
+                    <button class="c-icon-btn material-symbols-outlined" id="btn-play">play_arrow</button>
+                    <div class="c-pill c-pill-white c-user" id="btn-user" style="cursor:pointer;">
                         <img src="moon.png" alt="User">
                         <span>Astro</span>
                         <span class="material-symbols-outlined" style="font-size:1rem;">arrow_drop_down</span>
@@ -41,9 +43,9 @@
 
             <!-- Left sidebar numbers -->
             <div class="c-sidebar">
-                <span class="active">01</span>
-                <span>02</span>
-                <span>03</span>
+                <span class="active sidebar-nav" data-index="1">01</span>
+                <span class="sidebar-nav" data-index="2">02</span>
+                <span class="sidebar-nav" data-index="3">03</span>
             </div>
 
             <!-- Right side preview cards -->

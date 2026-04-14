@@ -129,7 +129,131 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => modal.classList.add('show'), 10);
     }
 
-    // --- API Features ---
+    // --- Top UI Controls Interactivity ---
+    
+    // 1. Menu
+    const btnMenu = document.getElementById('btn-menu');
+    if(btnMenu) {
+        btnMenu.addEventListener('click', () => {
+            openModal("Main Menu", `
+                <div style="display:flex; flex-direction:column; gap:20px; text-align:center; padding: 20px 0;">
+                    <a href="index.html" style="color:#1A1A1A; text-decoration:none; font-size:1.4rem; font-weight:700; transition:0.2s;">🏠 Home Base</a>
+                    <a href="apod.html" style="color:#1A1A1A; text-decoration:none; font-size:1.4rem; font-weight:700; transition:0.2s;">🌌 NASA APOD</a>
+                    <a href="news.html" style="color:#1A1A1A; text-decoration:none; font-size:1.4rem; font-weight:700; transition:0.2s;">📡 Spaceflight News</a>
+                </div>
+            `);
+        });
+    }
+
+    // 2. Search
+    const btnSearch = document.getElementById('btn-search');
+    if(btnSearch) {
+        btnSearch.addEventListener('click', () => {
+            openModal("Deep Space Scan", `
+                <div style="display:flex; flex-direction:column; gap:15px; margin-top:10px;">
+                    <p style="text-align:left; font-size:0.9rem;">What are you looking for?</p>
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" placeholder="Ex: Andromeda Galaxy..." style="flex:1; padding:12px; border-radius:10px; border:1px solid #ccc; font-family:'Outfit'; font-size:1rem; outline:none;">
+                        <button style="background:#196D69; color:white; border:none; padding:0 20px; border-radius:10px; font-weight:bold; cursor:pointer;">Scan</button>
+                    </div>
+                </div>
+            `);
+        });
+    }
+
+    // 3. Play Button (ISS Live Stream)
+    const btnPlay = document.getElementById('btn-play');
+    if(btnPlay) {
+        btnPlay.addEventListener('click', () => {
+            openModal("ISS Live Tracking Feed", `
+                <div style="margin-top:10px; border-radius:15px; overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                    <!-- We use a standard NASA TV embed as a demonstration -->
+                    <iframe width="100%" height="250" src="https://www.youtube.com/embed/21X5lGlDOfg?autoplay=1&mute=1" title="NASA Live Space feed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            `);
+        });
+    }
+
+    // 4. User Profile
+    const btnUser = document.getElementById('btn-user');
+    if(btnUser) {
+        btnUser.addEventListener('click', () => {
+            openModal("Cosmonaut Profile", `
+                <div style="text-align:left; line-height:1.6; background:#f9f9f9; padding:20px; border-radius:15px;">
+                    <div class="data-row"><span class="data-label">Callsign</span> <span class="data-value">Astro_01</span></div>
+                    <div class="data-row"><span class="data-label">Role</span> <span class="data-value" style="font-weight:600;">Deep Space Recon</span></div>
+                    <div class="data-row"><span class="data-label">Clearance</span> <span class="data-value">Level 5</span></div>
+                    <div class="data-row"><span class="data-label">Status</span> <span class="data-value" style="color:#196D69;">🟢 Active</span></div>
+                </div>
+                <button style="margin-top:20px; width:100%; border:2px solid #1A1A1A; background:transparent; padding:10px; border-radius:30px; font-weight:bold; cursor:pointer;" onmouseover="this.style.background='#1A1A1A'; this.style.color='white';" onmouseout="this.style.background='transparent'; this.style.color='#1A1A1A';">Disconnect</button>
+            `);
+        });
+    }
+
+    // 5. Language Switcher
+    const btnLang = document.getElementById('btn-lang');
+    if(btnLang) {
+        let currentLang = 'EN';
+        btnLang.addEventListener('click', (e) => {
+            currentLang = currentLang === 'EN' ? 'FR' : 'EN';
+            const langTextContainer = btnLang.querySelector('.c-lang:last-child');
+            if(langTextContainer) {
+                langTextContainer.innerHTML = currentLang === 'EN' ? 'EN <span style="opacity:0.5">FR</span>' : '<span style="opacity:0.5">EN</span> FR';
+            }
+            
+            // Swap some text
+            const h1 = document.querySelector('.c-col-text h1');
+            const p = document.querySelector('.c-col-text p');
+            const discBtn = document.querySelector('.c-col-text .c-pill-outline');
+            if(h1 && p) {
+                if(currentLang === 'FR') {
+                    h1.innerText = "Combler le fossé entre la Terre et l'humanité";
+                    p.innerText = "Il propose un large éventail de contenus orientés vers le tourisme spatial, notamment des articles, des vidéos et des guides touristiques.";
+                    discBtn.innerText = "Découvrir";
+                } else {
+                    h1.innerText = "Bridging the Gap between Earth and Humanity";
+                    p.innerText = "It offers a wide range of content pointed to space tourism, including articles, videos and tour guides.";
+                    discBtn.innerText = "Discover";
+                }
+            }
+        });
+        // Initial setup
+        btnLang.querySelector('.c-lang:last-child').innerHTML = 'EN <span style="opacity:0.5">FR</span>';
+    }
+
+    // 6. Sidebar Image Nav
+    const sidebarNavs = document.querySelectorAll('.sidebar-nav');
+    const heroBg = document.querySelector('.c-hero-bg');
+    if (sidebarNavs.length > 0 && heroBg) {
+        const backgrounds = [
+            heroBg.src, // First image is default
+            "file:///C:/Users/jyoti/.gemini/antigravity/brain/d657d01e-36c0-4054-b7a5-7fcb292b7873/cosmos_jungle_1776193231508.png",
+            "file:///C:/Users/jyoti/.gemini/antigravity/brain/d657d01e-36c0-4054-b7a5-7fcb292b7873/cosmos_landscape_1776193249044.png"
+        ];
+        // Ensure smooth transition
+        heroBg.style.transition = "opacity 0.5s ease-in-out";
+        
+        sidebarNavs.forEach(nav => {
+            nav.addEventListener('click', (e) => {
+                sidebarNavs.forEach(n => n.classList.remove('active'));
+                nav.classList.add('active');
+                
+                const index = parseInt(nav.getAttribute('data-index')) - 1;
+                
+                heroBg.style.opacity = 0;
+                setTimeout(() => {
+                    heroBg.src = backgrounds[index];
+                    heroBg.style.opacity = 1;
+                }, 500); // 500ms match transition
+            });
+            // basic hover
+            nav.style.cursor = 'pointer';
+            nav.addEventListener('mouseover', () => { if(!nav.classList.contains('active')) nav.style.opacity = 0.8; });
+            nav.addEventListener('mouseout', () => nav.style.opacity = 1);
+        });
+    }
+
+    // --- Bottom API Features ---
     
     // 1. ISS Tracker
     async function fetchISSData() {
