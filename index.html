@@ -101,19 +101,19 @@
                 </div>
 
                 <div class="c-planet-cards">
-                    <div class="c-pcard bg-blue">
+                    <div class="c-pcard bg-blue" id="btn-earth">
                         <img src="earth.png" class="p-img">
-                        <span class="p-title">Earth</span>
+                        <span class="p-title">Earth (ISS)</span>
                         <button class="p-btn material-symbols-outlined">arrow_outward</button>
                     </div>
-                    <div class="c-pcard bg-cyan">
+                    <div class="c-pcard bg-cyan" id="btn-planets">
                         <img src="moon.png" class="p-img" style="transform: scale(1.3); mix-blend-mode: multiply;">
-                        <span class="p-title">Planets</span>
+                        <span class="p-title">Mars Rover</span>
                         <button class="p-btn material-symbols-outlined">arrow_outward</button>
                     </div>
-                    <div class="c-pcard bg-teal">
+                    <div class="c-pcard bg-teal" id="btn-meteors">
                         <img src="sky.png" class="p-img" style="border-radius: 50%; opacity: 0.8; object-fit: cover; width: 60px; height: 60px;">
-                        <span class="p-title">Meteors</span>
+                        <span class="p-title">Asteroids</span>
                         <button class="p-btn material-symbols-outlined">arrow_outward</button>
                     </div>
                 </div>
@@ -146,6 +146,20 @@
         <span>ORIGINAL DESIGN BY MEXZY</span>
         <span>MOYORH</span>
     </div>
+
+    <!-- Live Data Modal -->
+    <div id="astro-modal" class="astro-modal">
+        <div class="astro-modal-content">
+            <span class="close-modal material-symbols-outlined">close</span>
+            <h2 id="modal-title">Data</h2>
+            <div id="modal-body" class="modal-body">
+                Loading live data...
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Logic -->
+    <script src="cosmos.js"></script>
 
 </body>
 </html>
