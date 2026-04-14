@@ -3,96 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space News</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        #main-header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #0779e4 3px solid;
-        }
-        #main-header h1 {
-            text-align: center;
-            text-transform: uppercase;
-            margin: 0;
-            font-size: 24px;
-        }
-        .news-article {
-            margin: 20px 0;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .news-article h2 {
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .news-article p {
-            color: #666;
-        }
-        .news-article a {
-            text-decoration: none;
-            color: #0779e4;
-        }
-    </style>
+    <title>Stella | Space News</title>
+    <link rel="stylesheet" href="stella.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-    <header id="main-header">
-        <h1>Space News</h1>
+    
+    <header>
+        <a href="index.html" class="brand">STELLA</a>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="apod.html">APOD</a>
+            <a href="news.html" class="active">News</a>
+            <a href="events.html" style="opacity:0.5">Events</a>
+            <a href="eonet.html" style="opacity:0.5">EONET</a>
+        </nav>
+        <div class="menu-toggle material-symbols-outlined" onclick="toggleMenu()">menu</div>
     </header>
-    <div class="container" id="news-container">
-        <!-- News articles will be dynamically inserted here -->
-    </div>
+
+    <main class="news-page">
+        <h1 class="page-title text-gradient">Latest Operations & Discoveries</h1>
+        
+        <div id="loader" class="loader"><div class="spinner"></div></div>
+        
+        <div class="news-grid" id="news-container" style="display: none;">
+            <!-- Dynamic News Cards Here -->
+        </div>
+    </main>
+
+    <!-- GSAP & Core Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="stella.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const newsData = [
-                {
-                    "title": "Airbus Ventures invests in Tokyo-based ispace",
-                    "url": "https://spacenews.com/airbus-ventures-ispace-investment/",
-                    "source": "spacenews"
-                },
-                {
-                    "title": "IAC conference seeks to build interest in space among elected officials",
-                    "url": "https://spacenews.com/conference-seeks-to-build-interest-in-space-among-elected-officials/",
-                    "source": "spacenews"
-                },
-                {
-                    "title": "China launches classified space debris mitigation technology satellite",
-                    "url": "https://spacenews.com/china-launches-classified-space-debris-mitigation-technology-satellite/",
-                    "source": "spacenews"
-                }
-            ];
-
-            const newsContainer = document.getElementById('news-container');
-
-            newsData.forEach(article => {
-                const articleElement = document.createElement('div');
-                articleElement.className = 'news-article';
-
-                const titleElement = document.createElement('h2');
-                titleElement.innerText = article.title;
-                articleElement.appendChild(titleElement);
-
-                const sourceElement = document.createElement('p');
-                sourceElement.innerHTML = `Source: <a href="${article.url}" target="_blank">${article.source}</a>`;
-                articleElement.appendChild(sourceElement);
-
-                newsContainer.appendChild(articleElement);
-            });
-        });
+        // Init News
+        document.addEventListener("DOMContentLoaded", fetchNews);
     </script>
 </body>
 </html>
