@@ -340,3 +340,56 @@ body.cosmos-theme {
     .c-center-badge { width: 80px; height: 80px; bottom: -30px; }
     .c-center-badge svg { width: 70px; height: 70px; }
 }
+
+/* ========================================= */
+/* --- LEGACY STYLES FOR APOD & NEWS PAGES --- */
+/* ========================================= */
+
+body:not(.cosmos-theme) {
+    background-color: #050710;
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(123, 44, 191, 0.15), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(0, 210, 255, 0.15), transparent 40%);
+}
+
+header {
+    position: fixed; top: 0; width: 100%; height: 80px; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center; padding: 0 5%;
+    background: rgba(5, 7, 16, 0.4); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.brand { font-size: 2rem; font-weight: 700; color: white; text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+.nav-links a.active, .nav-links a:hover { color: white; }
+.menu-toggle { display: none; cursor: pointer; color: white; }
+
+.loader { display: flex; justify-content: center; align-items: center; height: 50vh; }
+.spinner { width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-radius: 50%; border-top-color: #00d2ff; animation: spin 1s ease-in-out infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* APOD specific */
+.apod-container { padding-top: 100px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+#apod-content { width: 90%; max-width: 1200px; display: flex; flex-direction: column; gap: 30px; position: relative; margin-top: 40px; }
+.apod-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); border-radius: 20px; padding: 40px; }
+.apod-card h2 { font-size: 2.5rem; color: #00d2ff; margin-bottom: 10px; }
+.apod-card h3 { color: rgba(255,255,255,0.6); margin-bottom: 20px; font-weight: 400; }
+.apod-card p { line-height: 1.6; color: rgba(255,255,255,0.8); }
+.apod-media { width: 100%; display:block; margin: 20px 0; max-height: 60vh; border-radius: 15px; object-fit: contain; }
+
+/* News specific */
+.news-page { padding: 120px 5% 50px; min-height: 100vh; }
+.page-title { font-size: 3rem; text-align: center; margin-bottom: 40px; }
+.text-gradient { background: linear-gradient(90deg, #00d2ff, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.news-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; text-decoration: none; color: white; overflow: hidden; transition: transform 0.3s; }
+.news-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+.news-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.news-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+.news-source { color: #00d2ff; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+.news-title { font-size: 1.3rem; margin-bottom: 15px; line-height: 1.4; }
+.news-summary { color: rgba(255,255,255,0.6); margin-bottom: 20px; line-height: 1.5; }
+.news-footer { display: flex; justify-content: space-between; margin-top: auto; color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+.read-more { color: #00d2ff; font-weight: 600; }
